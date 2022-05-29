@@ -6,6 +6,7 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo;
 import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
+import java.time.LocalDate;
 
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
@@ -18,52 +19,54 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
  */
 public interface IModelo {
 	
-	public void comenzar();
+	void comenzar();
 
-	public void terminar();
+	void terminar();
 
-	public List<Aula> getAulas();
+	List<Aula> getAulas();
 
-	public int getNumAulas();
+	List<String> representarAulas() throws OperationNotSupportedException;
 
-	public List<String> representarAulas();
+	Aula buscarAula(Aula aula);
 
-	public Aula buscar(Aula aula);
+	void insertarAula(Aula aula) throws OperationNotSupportedException;
 
-	public void insertar(Aula aula) throws OperationNotSupportedException;
+	void borrarAula(Aula aula) throws OperationNotSupportedException;
 
-	public void borrar(Aula aula) throws OperationNotSupportedException;
+	List<Profesor> getProfesores();
 
-	public List<Profesor> getProfesores();
+	List<String> representarProfesores() throws OperationNotSupportedException;
 
-	public int getNumProfesores();
+	Profesor buscarProfesor(Profesor profesor);
 
-	public	List<String> representarProfesores();
+	void insertarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
-	public	Profesor buscar(Profesor profesor);
+	void borrarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
-	public	void insertar(Profesor profesor) throws OperationNotSupportedException;
+	List<Reserva> getReservas();
 
-	public	void borrar(Profesor profesor) throws OperationNotSupportedException;
+	int getNumReservas();
 
-	public	List<Reserva> getReservas();
+	List<String> representarReservas() throws OperationNotSupportedException;
 
-	public	int getNumReservas();
+	Reserva buscarReserva(Reserva reserva);
 
-	public	List<String> representarReservas();
+	void realizarReserva(Reserva reserva) throws OperationNotSupportedException;
 
-	public	Reserva buscar(Reserva reserva);
+	void anularReserva(Reserva reserva) throws OperationNotSupportedException;
 
-	public	void realizarReserva(Reserva reserva) throws OperationNotSupportedException;
+	List<Reserva> getReservasAula(Aula aula);
 
-	public	void anularReserva(Reserva reserva) throws OperationNotSupportedException;
+	List<Reserva> getReservasProfesor(Profesor profesor);
 
-	public	List<Reserva> getReservasAulas(Aula aula);
+	List<Reserva> getReservasPermanencia(Permanencia permanencia);
 
-	public	List<Reserva> getReservasProfesor(Profesor profesor);
+	List<Reserva> getReservas(Profesor profesor);
 
-	public	List<Reserva> getReservasPermanencia(Permanencia permanencia);
+	List<Reserva> getReservas(Aula aula);
 
-	public	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) throws OperationNotSupportedException;
+	List<Reserva> getReservas(LocalDate fechaPrestamo);
+
+	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia)  throws OperationNotSupportedException;
 
 }

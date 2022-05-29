@@ -4,6 +4,7 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.controlador;
 
 import java.util.List;
+import java.time.LocalDate;
 
 import javax.naming.OperationNotSupportedException;
 
@@ -18,38 +19,50 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
  */
 public interface IControlador {
 
-	public void comenzar();
+	void comenzar();
 
-	public	void terminar();
+	void terminar();
 
-	public	void insertarAula(Aula aula) throws OperationNotSupportedException;
+	void insertarAula(Aula aula) throws OperationNotSupportedException;
 
-	public	void insertarProfesor(Profesor profesor) throws OperationNotSupportedException;
+	void insertarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
-	public	void borrarAula(Aula aula) throws OperationNotSupportedException;
+	void borrarAula(Aula aula) throws OperationNotSupportedException;
 
-	public	void borrarProfesor(Profesor profesor) throws OperationNotSupportedException;
+	void borrarProfesor(Profesor profesor) throws OperationNotSupportedException;
 
-	public	Aula buscarAula(Aula aula);
+	Aula buscarAula(Aula aula);
 
-	public	Profesor buscarProfesor(Profesor profesor);
+	Profesor buscarProfesor(Profesor profesor);
 
-	public	List<String> representarAulas();
+	List<String> representarAulas() throws OperationNotSupportedException;
 
-	public	List<String> representarProfesores();
+	List<String> representarProfesores() throws OperationNotSupportedException;
 
-	public	List<String> representarReservas();
+	List<String> representarReservas() throws OperationNotSupportedException;
 
-	public	void realizarReserva(Reserva reserva) throws OperationNotSupportedException;
+	void realizarReserva(Reserva reserva) throws OperationNotSupportedException;
 
-	public	void anularReserva(Reserva reserva) throws OperationNotSupportedException;
+	void anularReserva(Reserva reserva) throws OperationNotSupportedException;
 
-	public	List<Reserva> getReservasAula(Aula aula);
+	List<Reserva> getReservasAula(Aula aula);
 
-	public	List<Reserva> getReservasProfesor(Profesor profesor);
+	List<Reserva> getReservasProfesor(Profesor profesor);
 
-	public	List<Reserva> getReservasPermanencia(Permanencia permanencia);
+	List<Reserva> getReservasPremanencia(Permanencia permanencia);
 
-	public	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) throws OperationNotSupportedException;
+	List<Profesor> getProfesores();
+
+	List<Aula> getAulas();
+
+	List<Reserva> getReservas();
+
+	List<Reserva> getReservas(Profesor profesor);
+
+	List<Reserva> getReservas(Aula aula);
+
+	List<Reserva> getReservas(LocalDate fecha);
+
+	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) throws OperationNotSupportedException;
 
 }
