@@ -28,7 +28,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class VentanaPrincipal {
-	
 
 	private static final String BORRAR_PROFESOR = "Borrar Profesor";
 	private static final String BORRAR_AULA = "Borrar Aula";
@@ -112,15 +111,13 @@ public class VentanaPrincipal {
 
 	@FXML
 	private void initialize() {
-		
+
 		this.inicializarProfesor();
 		this.inicializarAula();
 		this.inicializarReserva();
 		this.inicializarReservaProfesor();
-	
-	}
 
-	
+	}
 
 	@FXML
 	private void salir() {
@@ -137,7 +134,6 @@ public class VentanaPrincipal {
 		Dialogos.mostrarDialogoInformacionPersonalizado("Acerca De", contenido);
 	}
 
-
 	private void inicializarProfesor() {
 		tcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		tcCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
@@ -146,7 +142,7 @@ public class VentanaPrincipal {
 		tvProfesores.getSelectionModel().selectedItemProperty()
 				.addListener((ob, ov, nv) -> mostrarReservasProfesor(nv));
 	}
-	
+
 	public void actualizaProfesores() {
 		reservasAulas.clear();
 		tvAulas.getSelectionModel().clearSelection();
@@ -206,9 +202,6 @@ public class VentanaPrincipal {
 			cAnadirProfesor.inicializa();
 		}
 	}
-
-	
-
 
 	private void inicializarAula() {
 		tcaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -276,8 +269,6 @@ public class VentanaPrincipal {
 		tvAulas.getSelectionModel().clearSelection();
 		profesores.setAll(controladorMVC.getProfesores());
 	}
-
-
 
 	private void inicializarReserva() {
 		tcPermanencia.setCellValueFactory(new PropertyValueFactory<>("permanencia"));
@@ -351,7 +342,6 @@ public class VentanaPrincipal {
 	public void actualizaReservasPorMes(LocalDate mes) {
 		reservas.setAll(controladorMVC.getReservas(mes));
 	}
-
 
 	private void inicializarReservaProfesor() {
 		tcpAula.setCellValueFactory(new PropertyValueFactory<>("aula"));
@@ -433,4 +423,3 @@ public class VentanaPrincipal {
 	}
 
 }
-
